@@ -4,11 +4,8 @@ from django.http import HttpResponse
 from .models import Greeting
 from .models import Question
 
-<<<<<<< HEAD
-=======
 import csv_parse
 
->>>>>>> master
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -29,10 +26,6 @@ def questionset(request, comp, num):
     # it randomizes them as well using the order_by method
     # takes exactly @num amount. 
     questions = Question.objects.filter(comp__iexact=comp).order_by('?')[:num]
-=======
-def questionset(request):
-    questions = Question.objects.all()
->>>>>>> master
     return render(request, 'questionset.html', {'questions': questions})
 
 def upload_csv(request):
