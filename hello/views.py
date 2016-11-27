@@ -4,6 +4,11 @@ from django.http import HttpResponse
 from .models import Greeting
 from .models import Question
 
+<<<<<<< HEAD
+=======
+import csv_parse
+
+>>>>>>> master
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -17,18 +22,23 @@ def questionsconfirmed(request):
 def generateset(request):
     return render(request, 'generateset.html')
 
+<<<<<<< HEAD
 # should take questions from the database 
 def questionset(request, comp, num):
     # finds questions with comp exactly equal to the comp that was submitted (case insensitive)
     # it randomizes them as well using the order_by method
     # takes exactly @num amount. 
     questions = Question.objects.filter(comp__iexact=comp).order_by('?')[:num]
+=======
+def questionset(request):
+    questions = Question.objects.all()
+>>>>>>> master
     return render(request, 'questionset.html', {'questions': questions})
 
 def upload_csv(request):
     if request.method == 'POST':
         text = request.POST['upload']
-        csv_parse(text)
+        csv_parse.parse(text)
     return render(request, 'index.html')
 
 def db(request):
